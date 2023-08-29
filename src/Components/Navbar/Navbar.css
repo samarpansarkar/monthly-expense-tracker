@@ -11,8 +11,6 @@
     width: 40px;
     margin-top: 10px;
     margin-left: 20px;
-    border: 1px solid black;
-    border-radius: 10%;
 }
 .navbar-logo:hover{
     background-color: coral;
@@ -28,5 +26,19 @@
     font-size: 30px;
     justify-content: center;
     align-items: center;
-
 }
+@media (prefers-reduced-motion: no-preferences) {
+    .navbar-logo{
+        animation: navbar-logo-spin infinite 20s linear;
+    }
+}
+
+@keyframes navbar-logo-spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
