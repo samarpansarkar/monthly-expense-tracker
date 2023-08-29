@@ -2,6 +2,7 @@ import React from "react";
 import "./App.css";
 import Navbar from "./Components/Navbar/Navbar";
 import ExpenseItem from "./Components/ExpenseItem/ExpenseItem";
+import Card from "./Components/Card/Card";
 
 function App() {
   const expense = [
@@ -32,21 +33,13 @@ function App() {
   ];
 
   return (
-    <div className="appContainer">
+    <Card className="appContainer">
       <Navbar />
-      <ExpenseItem
-        Expense = {expense[0]}
-      />
-      <ExpenseItem
-        Expense = {expense[1]}
-      />
-      <ExpenseItem
-        Expense = {expense[2]}
-      />
-      <ExpenseItem
-        Expense = {expense[3]}
-      />
-    </div>
+      <ExpenseItem Expense={expense[0]} />
+      <ExpenseItem Expense={expense[1]} />
+      <ExpenseItem Expense={expense[2]} />
+      <ExpenseItem Expense={expense[3]} />
+    </Card>
   );
 }
 
