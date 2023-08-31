@@ -27,11 +27,7 @@
   color: #61dafb;
 }
 
-.app{
-max-width: 99%;
-}
-
-.appContainer{
+.appContainer {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -40,6 +36,11 @@ max-width: 99%;
   height: 100%;
   overflow: hidden;
   padding: 10px;
+}
+.App{
+  display: flex;
+  justify-content: center;
+  padding-top: 40px;
 }
 
 @keyframes App-logo-spin {

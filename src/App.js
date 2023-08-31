@@ -33,13 +33,15 @@ function App() {
   ];
 
   return (
-    <Card className="appContainer">
-      <Navbar />
-      <ExpenseItem Expense={expense[0]} />
-      <ExpenseItem Expense={expense[1]} />
-      <ExpenseItem Expense={expense[2]} />
-      <ExpenseItem Expense={expense[3]} />
-    </Card>
+    <div className="App">
+      <Card className="appContainer">
+        <Navbar />
+        <ExpenseItem Expense={expense[0]} />
+        <ExpenseItem Expense={expense[1]} />
+        <ExpenseItem Expense={expense[2]} />
+        <ExpenseItem Expense={expense[3]} />
+      </Card>
+    </div>
   );
 }
 
