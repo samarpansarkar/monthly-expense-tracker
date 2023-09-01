@@ -3,6 +3,7 @@ import "./App.css";
 import Navbar from "./Components/Navbar/Navbar";
 import ExpenseItem from "./Components/ExpenseItem/ExpenseItem";
 import Card from "./Components/Card/Card";
+import NewExpense from "./Components/NewExpense/NewExpense";
 
 function App() {
   const expense = [
@@ -36,6 +37,7 @@ function App() {
     <div className="App">
       <Card className="appContainer">
         <Navbar />
+        <NewExpense />
         <ExpenseItem Expense={expense[0]} />
         <ExpenseItem Expense={expense[1]} />
         <ExpenseItem Expense={expense[2]} />
