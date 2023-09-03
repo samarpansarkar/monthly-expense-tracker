@@ -34,10 +34,10 @@ const INITIAL_EXPENSES = [
 ];
 
 function App() {
-  const[expense, setExpense] = useState(INITIAL_EXPENSES);
-  
+  const [expense, setExpense] = useState(INITIAL_EXPENSES);
+
   const addExpenseHandler = (expenses) => {
-    setExpense((prevExpenses)=>{
+    setExpense((prevExpenses) => {
       return [expenses, ...expense];
     });
     console.log(expenses);
@@ -62,6 +62,10 @@ function App() {
     setFilteredYear(selectedYear);
   };
 
+  const filteredExpense = expense.filter((expense) => {
+    return expense.date.getFullYear().toString() === filteredYear;
+  });
+
   return (
     <div className="App">
       <Card className="appContainer">
@@ -71,17 +75,23 @@ function App() {
           defaultYear={filteredYear}
           onChangeFilter={addExpenseFilter}
         />
-        <p className="filterInfo-text">
-          <h3>Note: {filterInfoText} year data are hidden!</h3>
-        </p>
-        {expense.map((expense) => (
-          <ExpenseItem
-            key={expense.id}
-            title={expense.title}
-            amount={expense.amount}
-            date={expense.date}
-          />
-        ))}
+        <div className="center">
+          <p className="filterInfo-text">
+            Note: {filterInfoText} year data are hidden!
+          </p>
+        </div>
+        {filteredExpense.length === 0 ? (
+          <p>No Expenses found!</p>
+        ) : (
+          filteredExpense.map((expense) => (
+            <ExpenseItem
+              key={expense.id}
+              title={expense.title}
+              amount={expense.amount}
+              date={expense.date}
+            />
+          ))
+        )}
       </Card>
     </div>
   );
