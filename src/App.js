@@ -6,35 +6,40 @@ import Card from "./Components/Card/Card";
 import NewExpense from "./Components/NewExpense/NewExpense";
 import ExpenseFilter from "./Components/ExpenseFilter/ExpenseFilter";
 
-function App(props) {
-  const expense = [
-    {
-      id: "01",
-      title: "Car Insurance",
-      amount: "$1000",
-      date: new Date(2021, 1, 1),
-    },
-    {
-      id: "02",
-      title: "Rent",
-      amount: "$1000",
-      date: new Date(2021, 12, 3),
-    },
-    {
-      id: "03",
-      title: "Gas",
-      amount: "$1000",
-      date: new Date(2021, 4, 6),
-    },
-    {
-      id: "04",
-      title: "House",
-      amount: "$1000",
-      date: new Date(2021, 11, 9),
-    },
-  ];
+const INITIAL_EXPENSES = [
+  {
+    id: "01",
+    title: "Car Insurance",
+    amount: "$1000",
+    date: new Date(2021, 1, 1),
+  },
+  {
+    id: "02",
+    title: "Rent",
+    amount: "$1000",
+    date: new Date(2021, 12, 3),
+  },
+  {
+    id: "03",
+    title: "Gas",
+    amount: "$1000",
+    date: new Date(2021, 4, 6),
+  },
+  {
+    id: "04",
+    title: "House",
+    amount: "$1000",
+    date: new Date(2021, 11, 9),
+  },
+];
 
+function App() {
+  const[expense, setExpense] = useState(INITIAL_EXPENSES);
+  
   const addExpenseHandler = (expenses) => {
+    setExpense((prevExpenses)=>{
+      return [expenses, ...expense];
+    });
     console.log(expenses);
     console.log("In App.js");
   };
@@ -69,10 +74,14 @@ function App(props) {
         <p className="filterInfo-text">
           <h3>Note: {filterInfoText} year data are hidden!</h3>
         </p>
-        <ExpenseItem Expense={expense[0]} />
-        <ExpenseItem Expense={expense[1]} />
-        <ExpenseItem Expense={expense[2]} />
-        <ExpenseItem Expense={expense[3]} />
+        {expense.map((expense) => (
+          <ExpenseItem
+            key={expense.id}
+            title={expense.title}
+            amount={expense.amount}
+            date={expense.date}
+          />
+        ))}
       </Card>
     </div>
   );
