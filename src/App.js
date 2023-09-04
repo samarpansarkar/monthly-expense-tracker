@@ -5,30 +5,31 @@ import Card from "./Components/Card/Card";
 import NewExpense from "./Components/NewExpense/NewExpense";
 import ExpenseFilter from "./Components/ExpenseFilter/ExpenseFilter";
 import ExpensesList from "./Components/ExpensesList/ExpensesList";
+import ExpensesChart from "./Components/ExpensesChart";
 
 const INITIAL_EXPENSES = [
   {
     id: "01",
     title: "Car Insurance",
-    amount: "$1000",
+    amount: "1000",
     date: new Date(2021, 1, 1),
   },
   {
     id: "02",
     title: "Rent",
-    amount: "$1000",
+    amount: "1000",
     date: new Date(2021, 12, 3),
   },
   {
     id: "03",
     title: "Gas",
-    amount: "$1000",
+    amount: "1000",
     date: new Date(2021, 4, 6),
   },
   {
     id: "04",
     title: "House",
-    amount: "$1000",
+    amount: "1000",
     date: new Date(2021, 11, 9),
   },
 ];
@@ -36,11 +37,11 @@ const INITIAL_EXPENSES = [
 function App() {
   const [expense, setExpense] = useState(INITIAL_EXPENSES);
 
-  const addExpenseHandler = (expenses) => {
+  const addExpenseHandler = (newExpenses) => {
     setExpense((prevExpenses) => {
-      return [expenses, ...expense];
+      return [newExpenses, ...prevExpenses];
     });
-    console.log(expenses);
+    console.log(newExpenses);
     console.log("In App.js");
   };
 
@@ -63,6 +64,7 @@ function App() {
             defaultYear={filteredYear}
             onChangeFilter={filterChangeHandler}
           />
+          <ExpensesChart expenses ={filteredExpense}/>
           <ExpensesList items={filteredExpense} />
         </Card>
       </li>

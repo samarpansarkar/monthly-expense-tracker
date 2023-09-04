@@ -8,7 +8,7 @@ function ExpenseItem(props) {
       {/* <div>{props.Expense.date.toISOString()}</div> to convert to string we need to add "toISOString"  */}
       <div className="expense-item-descriptions">
         <h2>{props.title}</h2>
-        <div className="expense-item-price">{props.amount}</div>
+        <div className="expense-item-price">₹ {props.amount}</div>
       </div>
     </div>
   );
