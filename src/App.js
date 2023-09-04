@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import "./App.css";
 import Navbar from "./Components/Navbar/Navbar";
-import ExpenseItem from "./Components/ExpenseItem/ExpenseItem";
 import Card from "./Components/Card/Card";
 import NewExpense from "./Components/NewExpense/NewExpense";
 import ExpenseFilter from "./Components/ExpenseFilter/ExpenseFilter";
+import ExpensesList from "./Components/ExpensesList/ExpensesList";
 
 const INITIAL_EXPENSES = [
   {
@@ -45,20 +45,7 @@ function App() {
   };
 
   const [filteredYear, setFilteredYear] = useState("2020");
-
-  let filterInfoText = "2019,2021 & 2022";
-
-  if (filteredYear === "2019") {
-    filterInfoText = "2020,2021 & 2022";
-  } else if (filteredYear === "2020") {
-    filterInfoText = "2019,2021 & 2022";
-  } else if (filteredYear === "2021") {
-    filterInfoText = "2019,2020 & 2022";
-  } else {
-    filterInfoText = "2019,2020 & 2021";
-  }
-
-  const addExpenseFilter = (selectedYear) => {
+  const filterChangeHandler = (selectedYear) => {
     setFilteredYear(selectedYear);
   };
 
@@ -68,31 +55,17 @@ function App() {
 
   return (
     <div className="App">
-      <Card className="appContainer">
-        <Navbar />
-        <NewExpense onAddExpense={addExpenseHandler} />
-        <ExpenseFilter
-          defaultYear={filteredYear}
-          onChangeFilter={addExpenseFilter}
-        />
-        <div className="center">
-          <p className="filterInfo-text">
-            Note: {filterInfoText} year data are hidden!
-          </p>
-        </div>
-        {filteredExpense.length === 0 ? (
-          <p>No Expenses found!</p>
-        ) : (
-          filteredExpense.map((expense) => (
-            <ExpenseItem
-              key={expense.id}
-              title={expense.title}
-              amount={expense.amount}
-              date={expense.date}
-            />
-          ))
-        )}
-      </Card>
+      <li>
+        <Card className="appContainer">
+          <Navbar />
+          <NewExpense onAddExpense={addExpenseHandler} />
+          <ExpenseFilter
+            defaultYear={filteredYear}
+            onChangeFilter={filterChangeHandler}
+          />
+          <ExpensesList items={filteredExpense} />
+        </Card>
+      </li>
     </div>
   );
 }
